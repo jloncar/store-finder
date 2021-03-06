@@ -1,0 +1,7 @@
+type Query {
+  stores: [Store]
+}
+
+schema {
+  query: Query
+}
