@@ -2,7 +2,7 @@ import { buildSchema } from 'graphql';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
-const schemaFiles = ['store.gql', 'index.gql'];
+const schemaFiles = ['schema.gql'];
 
 export default buildSchema(
   schemaFiles

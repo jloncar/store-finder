@@ -1,3 +1,3 @@
 export interface IRepository<T> {
-  all(): Promise<T[]>;
+  fetch(): Promise<T[]>;
 }

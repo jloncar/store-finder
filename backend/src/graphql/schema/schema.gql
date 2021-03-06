@@ -1,0 +1,45 @@
+type DrivingInfo {
+  "In meters"
+  distance: Float
+
+  "In seconds"
+  duration: Float
+}
+
+type Store {
+  uuid: ID!
+
+  city: String
+  postalCode: String
+  street: String
+  street2: String
+  street3: String
+  addressName: String
+  complexNumber: String
+  showWarningMessage: Boolean
+  todayOpen: String
+  locationType: String
+  collectionPoint: Boolean
+  sapStoreID: String
+  todayClose: String
+
+  longitude: Float
+  latitude: Float
+
+  "Distance in meters"
+  distance: Float
+
+  "Driving information"
+  drivingInfo: DrivingInfo
+}
+
+type Query {
+  stores: [Store]
+  storesWithDistance(userLatitude: Float!, userLongitude: Float!, limit: Int): [Store]
+  storesWithDrivingDistance(userLatitude: Float!, userLongitude: Float!, limit: Int): [Store]
+  storesWithBikeDistance(userLatitude: Float!, userLongitude: Float!, limit: Int): [Store]
+}
+
+schema {
+  query: Query
+}

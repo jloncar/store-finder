@@ -1,3 +1,7 @@
+import fetch from 'node-fetch';
+import { RoutingAPIError } from '../error/RoutingAPI.error';
+
+export interface DistanceMatrix {}
 export default class Store {
   city: string;
   postalCode: string;
@@ -15,7 +19,16 @@ export default class Store {
   collectionPoint: boolean;
   sapStoreID: string;
   todayClose: string;
-  distance: number;
+
+  // Distance, in meters
+  distance?: number;
+
+  // Destination info
+  destinationInfo?: {
+    vehicle: 'car' | 'bike' | 'foot';
+    distance: number;
+    duration: number;
+  };
 
   /**
    * Calculates crow distance between user and store.
@@ -40,7 +53,22 @@ export default class Store {
       Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const d = parseFloat((R * c).toFixed(2));
-    this.distance = d;
+    this.distance = d * 1000; // convert to meters
+    return this;
+  }
+
+  async calculateDrivingDistance(userLatitude: number, userLongitude: number): Promise<this> {
+    const endpoint = `${globalThis.routingServerPrefix}${userLongitude},${userLatitude};${this.longitude},${this.latitude}?overview=false&alternatives=false&steps=false`;
+    const data: Record<string, unknown> = await (await fetch(endpoint)).json();
+
+    if (!data?.routes) throw new RoutingAPIError(JSON.stringify(data));
+
+    this.destinationInfo = {
+      vehicle: 'car',
+      distance: data?.routes[0]?.distance,
+      duration: data?.routes[0]?.duration,
+    };
+
     return this;
   }
 }

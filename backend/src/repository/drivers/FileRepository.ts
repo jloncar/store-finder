@@ -12,7 +12,7 @@ export abstract class FileRepository<T> implements IRepository<T> {
     if (!existsSync(this.filePath)) throw new FileNotFoundError();
   }
 
-  all(): Promise<T[]> {
+  fetch(): Promise<T[]> {
     throw new Error('Method not implemented.');
   }
 }

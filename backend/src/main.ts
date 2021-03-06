@@ -3,10 +3,13 @@ import { graphqlHTTP } from 'express-graphql';
 import schema from './graphql/schema';
 import resolvers from './graphql/resolvers';
 
-// ENV CONFIG
+// Configuration properties
 const port = 5000;
 const graphiql = true;
+globalThis.routingServerPrefix = 'https://routing.openstreetmap.de/routed-car/route/v1/driving/';
+globalThis.maximumRoutingRequests = 5;
 
+// Bootstrap
 const app = express();
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises

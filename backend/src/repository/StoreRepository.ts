@@ -1,6 +1,7 @@
 import Store from '../model/Store';
 import { FileRepository } from './drivers/FileRepository';
 import { readFile } from 'fs/promises';
+import { RoutingAPILimitError } from '../error/RoutingAPILimit.error';
 
 interface StoreJSON {
   stores: [
@@ -25,7 +26,7 @@ export class StoreRepository extends FileRepository<Store> {
     super('stores.json');
   }
 
-  async all(): Promise<Store[]> {
+  async fetch(): Promise<Store[]> {
     const parsed: StoreJSON = JSON.parse(
       (await readFile(this.filePath)).toString('utf-8'),
     ) as StoreJSON;
@@ -38,14 +39,32 @@ export class StoreRepository extends FileRepository<Store> {
     });
   }
 
-  async allWithDistance({
+  async fetchWithDistance({
     userLatitude,
     userLongitude,
     limit,
   }: AllWithDistanceArgs): Promise<Store[]> {
-    return (await this.all())
+    return (await this.fetch())
       .map((store) => store.calculateCrowDistance(userLatitude, userLongitude))
       .sort((a, b) => a.distance - b.distance)
       .slice(0, limit);
+  }
+
+  async fetchWithDrivingDistance({
+    userLatitude,
+    userLongitude,
+    limit,
+  }: AllWithDistanceArgs): Promise<Store[]> {
+    if (!limit) limit = 5;
+    if (limit && limit > globalThis.maximumRoutingRequests)
+      throw new RoutingAPILimitError(
+        `Routing API Error: Limit can't be set higher than ${globalThis.maximumRoutingRequests}`,
+      );
+
+    return Promise.all(
+      await (await this.fetchWithDistance({ userLatitude, userLongitude, limit })).map(
+        async (store) => await store.calculateDrivingDistance(userLatitude, userLongitude),
+      ),
+    );
   }
 }
