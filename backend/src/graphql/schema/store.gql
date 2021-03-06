@@ -15,4 +15,5 @@ type Store {
   collectionPoint: Boolean
   sapStoreID: String
   todayClose: String
+  distance: Float
 }

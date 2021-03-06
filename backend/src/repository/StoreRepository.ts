@@ -14,6 +14,12 @@ interface StoreJSON {
   };
 }
 
+type AllWithDistanceArgs = {
+  userLatitude: number;
+  userLongitude: number;
+  limit?: number;
+};
+
 export class StoreRepository extends FileRepository<Store> {
   constructor() {
     super('stores.json');
@@ -30,5 +36,16 @@ export class StoreRepository extends FileRepository<Store> {
       Object.assign(store, storeRaw);
       return store;
     });
+  }
+
+  async allWithDistance({
+    userLatitude,
+    userLongitude,
+    limit,
+  }: AllWithDistanceArgs): Promise<Store[]> {
+    return (await this.all())
+      .map((store) => store.calculateCrowDistance(userLatitude, userLongitude))
+      .sort((a, b) => a.distance - b.distance)
+      .slice(0, limit);
   }
 }

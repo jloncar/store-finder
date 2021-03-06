@@ -1,5 +1,6 @@
 type Query {
   stores: [Store]
+  storesWithDistance(userLatitude: Float!, userLongitude: Float!, limit: Int): [Store]
 }
 
 schema {
