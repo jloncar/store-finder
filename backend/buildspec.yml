@@ -11,6 +11,7 @@ phases:
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
+      - cd backend
       - yarn install
   build:
     commands:
