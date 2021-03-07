@@ -46,6 +46,7 @@ Frontend and backend are separate applications because frontend can be served se
 
 - `cd backend/`
 - `yarn install`
+- `cp .env.example .env` and modify if needed
 - `yarn start`
 - Visit http://localhost:5000/graphql
 
@@ -53,5 +54,6 @@ Frontend and backend are separate applications because frontend can be served se
 
 - `cd frontend`
 - `yarn install`
+- `cp .env.example .env` and modify if needed
 - `yarn serve`
 - Visit http://localhost:8080/
