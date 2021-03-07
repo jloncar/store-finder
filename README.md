@@ -1,5 +1,7 @@
 # Store Finder
 
+![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoia3JSQjh0Y2QweVplL0NXdmtUeWhyMzgwZncxd1dOSWZvYThWTDVrT05rbVFXZzd4VkkzeU8zaXViR1dzOC9kVEdVNENma1gzWk51WklrT280S0NhOUlRPSIsIml2UGFyYW1ldGVyU3BlYyI6IjFqNklvTllIQVducTIySjEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=main)
+
 > Easily find the nearest stores and critical information need to plan your next grocery shopping trip!
 
 ## Table of contents
@@ -8,13 +10,8 @@
 - [Screenshot](#screenshot)
 - [Technologies](#technologies)
 - [Setup](#setup)
-  - [Accounts checklist](#accounts-checklist)
-  - [Requirements](#requirements)
-  - [Drupal Setup](#drupal-setup)
+  - [Backend Setup](#backend-setup)
   - [Frontend Setup](#frontend-setup)
-- [Accessibility testing](#accessibility-testing)
-- [Resources](#resources)
-- [Daily habits](#daily-habbits)
 
 ## General info
 
@@ -49,10 +46,10 @@ Frontend and backend are separate applications because frontend can be served se
 
 - `cd backend/`
 - `yarn install`
-- `yarn build`
+- `yarn start`
 - Visit http://localhost:5000/graphql
 
-### Frontend
+### Frontend Setup
 
 - `cd frontend`
 - `yarn install`

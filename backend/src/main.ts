@@ -4,7 +4,7 @@ import { StoreSchema } from './graphql/StoreSchema';
 import cors from 'cors';
 
 // Configuration properties
-const port = 5000;
+const port = process.env.PORT || 5000;
 const graphiql = true;
 globalThis.routingServerHost = 'https://routing.openstreetmap.de/';
 globalThis.maximumRoutingRequests = 5;
