@@ -1,7 +1,11 @@
 import fetch from 'node-fetch';
-import { RoutingAPIError } from '../error/RoutingAPI.error';
+import { RoutingAPIError } from '../error/RoutingAPIError';
 
-export interface DistanceMatrix {}
+export enum Vehicle {
+  CAR = 'car',
+  FOOT = 'foot',
+  BIKE = 'bike',
+}
 export default class Store {
   city: string;
   postalCode: string;
@@ -24,8 +28,8 @@ export default class Store {
   distance?: number;
 
   // Destination info
-  destinationInfo?: {
-    vehicle: 'car' | 'bike' | 'foot';
+  travelInfo?: {
+    vehicle: Vehicle;
     distance: number;
     duration: number;
   };
@@ -57,14 +61,18 @@ export default class Store {
     return this;
   }
 
-  async calculateDrivingDistance(userLatitude: number, userLongitude: number): Promise<this> {
-    const endpoint = `${globalThis.routingServerPrefix}${userLongitude},${userLatitude};${this.longitude},${this.latitude}?overview=false&alternatives=false&steps=false`;
+  async fetchTravelInfo(
+    userLatitude: number,
+    userLongitude: number,
+    vehicle: Vehicle,
+  ): Promise<this> {
+    const endpoint = `${globalThis.routingServerHost}routed-${vehicle}/route/v1/driving/${userLongitude},${userLatitude};${this.longitude},${this.latitude}?overview=false&alternatives=false&steps=false`;
     const data: Record<string, unknown> = await (await fetch(endpoint)).json();
 
     if (!data?.routes) throw new RoutingAPIError(JSON.stringify(data));
 
-    this.destinationInfo = {
-      vehicle: 'car',
+    this.travelInfo = {
+      vehicle,
       distance: data?.routes[0]?.distance,
       duration: data?.routes[0]?.duration,
     };
