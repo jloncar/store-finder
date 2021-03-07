@@ -5,7 +5,10 @@
   "author": "Jezdimir Loncar",
   "license": "MIT",
   "private": true,
-  "main": "index.ts",
+  "main": "dist/main.js",
+  "engines": {
+    "node": "14.16.0"
+  },
   "scripts": {
     "start": "npm run copy-assets && tsc && node dist/main.js",
     "start:watch": "./node_modules/nodemon/bin/nodemon.js --watch src -e ts,gql --exec \"clear && npm run build\"",

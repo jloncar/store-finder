@@ -24,7 +24,5 @@ phases:
 artifacts:
   base-directory: backend
   files:
-    - tsconfig.json
-    - package.json
     - dist/**/*
     - node_modules/**/*
