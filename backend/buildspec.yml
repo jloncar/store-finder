@@ -24,5 +24,6 @@ phases:
 artifacts:
   base-directory: backend
   files:
+    - Procfile
     - dist/**/*
     - node_modules/**/*
