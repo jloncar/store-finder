@@ -22,8 +22,9 @@ phases:
     commands:
       - echo Build completed on `date`
 artifacts:
+  base-directory: backend
   files:
-    - backend/tsconfig.json
-    - backend/package.json
-    - backend/dist/**/*
-    - backend/node_modules/**/*
+    - tsconfig.json
+    - package.json
+    - dist/**/*
+    - node_modules/**/*
