@@ -12,6 +12,10 @@ globalThis.maximumRoutingRequests = 5;
 // Bootstrap
 const app = express();
 app.use(cors());
+
+app.get('/', (req, res) => {
+  res.status(200).send(`Store Finder Backend!`);
+});
 app.use('/graphql', graphqlHTTP({ schema: StoreSchema, graphiql })); // eslint-disable-line @typescript-eslint/no-misused-promises
 
 console.log(`Listening on http://localhost:${port}/`);
