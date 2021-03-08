@@ -1,6 +1,6 @@
 # Store Finder
 
-![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoia3JSQjh0Y2QweVplL0NXdmtUeWhyMzgwZncxd1dOSWZvYThWTDVrT05rbVFXZzd4VkkzeU8zaXViR1dzOC9kVEdVNENma1gzWk51WklrT280S0NhOUlRPSIsIml2UGFyYW1ldGVyU3BlYyI6IjFqNklvTllIQVducTIySjEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=main)
+![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiSTRmNjZlMGlobXpPZUxLRFhuWWZMc2VtNTQ0QUFjRjR4OTRwMFcyNXNjK0xmK04xdHhZK1Bra3ZLeG8zWmpscTZSeVNSVUM4QUp6S0NUTGdDWGVmR0hNPSIsIml2UGFyYW1ldGVyU3BlYyI6IkREb01paWZuMHZybUdzblIiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=main)
 
 > Easily find the nearest stores and critical information need to plan your next grocery shopping trip!
 
