@@ -1,6 +1,7 @@
 # Store Finder
 
 ![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiSTRmNjZlMGlobXpPZUxLRFhuWWZMc2VtNTQ0QUFjRjR4OTRwMFcyNXNjK0xmK04xdHhZK1Bra3ZLeG8zWmpscTZSeVNSVUM4QUp6S0NUTGdDWGVmR0hNPSIsIml2UGFyYW1ldGVyU3BlYyI6IkREb01paWZuMHZybUdzblIiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=main)
+> **NOTE:** This was POC for implementing GraphQL API in NodeJS. It's no longer maintenaned.
 
 > Easily find the nearest stores and critical information need to plan your next grocery shopping trip!
 
